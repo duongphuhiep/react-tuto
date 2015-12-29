@@ -1,23 +1,26 @@
-/*var path = require('path');
-var node_modules = path.resolve(__dirname, 'node_modules');*/
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-    entry: "./app/main.jsx",
-    output: {
-        path: "_dist",
-        filename: "bundle.js"
-    },
-    module: {
-        loaders: [{
-            test: /\.css$/,
-            loader: "style!css"
-        }, {
-            test: /\.jsx?$/,
-            exclude: /(node_modules|bower_components)/,
-            loader: 'babel',
-            query: {
-                presets: ['react', 'es2015']
-            }
-        }]
-    }
+  devtool: 'eval',
+  entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './src/index'
+  ],
+  output: {
+    path: path.join(__dirname, '_dist'),
+    filename: 'bundle.js',
+    publicPath: '/_dist/'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['react-hot', 'babel'],
+      include: path.join(__dirname, 'src')
+    }]
+  }
 };
