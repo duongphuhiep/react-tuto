@@ -3,32 +3,22 @@ import { render } from 'react-dom';
 import { Router, IndexRoute, Route } from 'react-router';
 //import createHashHistory from 'history/lib/createHashHistory';
 import createHistory from 'history/lib/createBrowserHistory';
+import App from './App';
 import HomePage from './HomePage';
 import CaseStudiesPage from './CaseStudiesPage';
-
-/*const NavBar = React.createClass({
-  render() {
-    return (
-      <div>
-        <h1>App</h1>
-        <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/casestudies">Case Studies</Link></li>
-        </ul>
-        {this.props.children}
-      </div>
-    )
-  }
-});*/
-
-
+import NotFoundPage from './NotFoundPage';
 
 var history = createHistory();
 render(
-  <Router history={history}>
-    <IndexRoute component={HomePage} />
-    <Route path="home" component={HomePage} />
-    <Route path="casestudies" component={CaseStudiesPage} />
-  </Router>,
+  (
+    <Router history={history}>
+      <Route path="/" component={App}>
+        <IndexRoute component={HomePage} />
+        <Route path="home" component={HomePage} />
+        <Route path="casestudies" component={CaseStudiesPage} />
+        <Route path="*" component={NotFoundPage} />
+      </Route>
+    </Router>
+  ),
   document.getElementById('root')
 );
