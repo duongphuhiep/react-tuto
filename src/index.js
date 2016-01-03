@@ -7,6 +7,8 @@ import App from './App';
 import HomePage from './HomePage';
 import CaseStudiesPage from './CaseStudiesPage';
 import NotFoundPage from './NotFoundPage';
+import './navbar.css';
+
 
 var history = createHistory();
 render(
