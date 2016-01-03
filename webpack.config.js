@@ -27,5 +27,10 @@ module.exports = {
         loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, 'src')
       }]
+  },
+  externals: {
+    // require("jquery") is external and available
+    //  on the global var jQuery
+    "jquery": "jQuery"
   }
 };
