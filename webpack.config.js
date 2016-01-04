@@ -1,5 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
+var precss = require('precss');
 
 module.exports = {
   devtool: 'eval',
@@ -20,12 +22,15 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loader: "style!css"
+        loader: "style!css!postcss"
       },
       {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, 'src')
       }]
+  },
+  postcss: function () {
+    return [autoprefixer, precss];
   }
 };
