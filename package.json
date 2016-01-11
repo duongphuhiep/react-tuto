@@ -7,8 +7,10 @@
   "dependencies": {
     "history": "^1.17.0",
     "react": "^0.14.3",
-    "react-router": "^1.0.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "react-headroom": "^1.7.3",
+    "react-responsive": "^1.1.0",
+    "react-router": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",

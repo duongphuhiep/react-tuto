@@ -1,47 +1,30 @@
 import React, { Component } from 'react';
 import { Router, Route, Link } from 'react-router';
+import MediaQuery from 'react-responsive';
+import Headroom from 'react-headroom';
 
 export default class App extends Component {
   render() {
     return (
-      <div className="app-container">
+      <div>
+        <MediaQuery minWidth={840}>
+          <Headroom>
+            <div className="horz-navbar">
+              <Link to="/home">Home</Link>
+              <Link to="/casestudies">Case Studies</Link>
+            </div>
+          </Headroom>
+        </MediaQuery>
 
-        {/*
-        <nav className="app-nav">
-          <ul>
+        <MediaQuery maxWidth={840}>
+          Side navbar
+          <ul className="app-container">
             <li><Link to="/home">Home</Link></li>
             <li><Link to="/casestudies">Case Studiess</Link></li>
           </ul>
-        </nav>
-        <div className="app-header"><button>Toggle</button></div>
-        */}
+        </MediaQuery>
 
-        <div className="top-bar">
-          <div className="top-bar-left">
-            <ul className="dropdown menu" data-dropdown-menu>
-              <li className="menu-text"><Link to="/home">LOGO</Link></li>
-              
-              <li><Link to="/home">Home</Link></li>
-              <li><Link to="/casestudies">Case Studiess</Link></li>
-              <li className="has-submenu">
-                <a href="#">Other</a>
-                <ul className="submenu menu vertical" data-submenu>
-                  <li><a href="#">One</a></li>
-                  <li><a href="#">Two</a></li>
-                  <li><a href="#">Three</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div className="top-bar-right">
-            <ul className="menu">
-              <li><input type="search" placeholder="Search" /></li>
-              <li><button type="button" className="button">Search</button></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="app-content">
+        <div>
           {this.props.children}
         </div>
       </div>
